@@ -1,5 +1,6 @@
 'use client';
 import { useState , useEffect} from "react";
+import bubbleIcon from "./bubble.webp"
 
 // iterate thru array 
 //compare each element to the next
@@ -13,7 +14,6 @@ const startingArray = [3, 5, 1, 7, 4, 6, 9, 2, 8]
 export default function Home() {
   const [array, setArray] = useState(startingArray)
   const [input, setInput] = useState("")
-  const[getUserInput, setGetUserInput] = useState("")
 
   useEffect(() => {
     const {arr: newArray, swapsHappened} = bubbleStep(array)
@@ -24,7 +24,6 @@ export default function Home() {
   }, [array])
 
   function handleClick() { 
-    setGetUserInput(input)
     const userArray = input.split(" ")
     const userArrayNums = userArray.filter(Boolean).map(Number)
     setArray(userArrayNums)
@@ -32,11 +31,11 @@ export default function Home() {
 
 
   const createBubbleStack = (num: number): JSX.Element[] => {
-    let emojis = [];
+    let icons = [];
     for (let i = 0; i < num; i++) {
-      emojis.push(<span key={i} style={{ display: 'block' }}>🫧</span>);
+      icons.push(<img key={i} src={bubbleIcon.src} alt="Bubble" style={{ display: 'block', width: '30px', height: '30px' }} />);
     }
-    return emojis;
+    return icons;
   };
 
   return (
@@ -50,7 +49,12 @@ export default function Home() {
       </div>
       <div className="flex"> 
         {array.map((num, index) => {
-          return <div key={index} className="mx-2"> {num} {createBubbleStack(num)}</div>
+          return(
+            <div key={index} className="mx-2 flex flex-col items-center"> 
+              <div className="text-center"> {num} </div>
+              <div> {createBubbleStack(num)}</div>
+            </div>
+          )
         })}
       </div>
     </div>
