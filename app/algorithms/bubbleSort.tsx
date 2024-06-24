@@ -1,10 +1,10 @@
-const bubbleSort(arr) => {
+const bubbleStep = (arr: number[]): {arr: number[], swapsHappened: boolean} => {
     const newArray = [...arr];
-    let swapped = false;
+    let swapsHappened = false;
 
-    for (let i = 0; i < arr.length - 1 ; i++){
-        const element1 = arr[i]
-        const element2 = arr[i + 1]
+    for (let i = 0; i < newArray.length - 1 ; i++){
+        const element1 = newArray[i]
+        const element2 = newArray[i + 1]
 
         const shouldSwap = element2 < element1;
 
@@ -14,31 +14,13 @@ const bubbleSort(arr) => {
 
             //indicate that there was a swap
 
-            swapped = true;
+            swapsHappened = true;
         }
     }
+    return {arr: newArray, swapsHappened}
+    //for each run thru the array, it returns the new array and whether at least one swap happened
+    // so over in my useEffect, I want it to keep going until there is a run thru with no more swaps happening, indicating storted
 
 }
 
-export default bubbleSort
-
-    // if (!swapped) {
-    //     return "sorted"
-    // } else {
-    //     return bubbleSort(newArray)
-    // } turn into a wrapped function instead
-
-// const wrappedBubbleSort = (arr: number[], callback: (returnArray: number[]) => void): number[] => {
-//     let finished = false; 
-//     let array = [...arr]
-
-//     do {
-//         const {arr: returnArr, swapped} = bubbleSort(array)
-
-//         array = returnArr;
-//         finished = !swapped
-
-//         callback(returnArr)
-
-//     } while (!finished)
-
+export default bubbleStep

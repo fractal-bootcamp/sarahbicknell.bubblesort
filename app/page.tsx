@@ -6,33 +6,36 @@ import { useState , useEffect} from "react";
 //if the next element is smaller, swap elements
 // when done, check if it's sorted, if not, do it again
 
-import bubbleSort from "./algorithms/bubbleSort"
+import bubbleStep from "./algorithms/bubbleSort"
 
 const startingArray = [3, 5, 1, 7, 4, 6, 9, 2, 8]
 
 export default function Home() {
-  const [arrays, setArrays] = useState([])
+  const [array, setArray] = useState(startingArray)
 
   useEffect(() => {
-    const array = wrappedBubbleSort(startingArray)
-
-  }, [])
+    const {arr: newArray, swapsHappened} = bubbleStep(array)
+    if (swapsHappened == true ){
+      setTimeout(()=> setArray(newArray), 1000)
+      console.log(newArray)
+    }
+  }, [array])
 
   return (
-    <div>
+    <div className="flex flex-col pl-10 justify-center">
+      <h2 className="text-2xl font-bold pb-10 pt-10"> 
+        Bubble Sort Visualization
+      </h2>
       <div> 
-        Gonna visualize bubble sort
-      </div>
-      <div> 
-        {startingArray.map((num) => {
-          return <span key={num} className="mx-2"> {num}</span>
+        {startingArray.map((num, index) => {
+          return <span key={index} className="mx-2"> {num}</span>
         })}
       </div>
-          <div> 
-          {array.map((num) => {
-            return <span key={num} className="mx-2"> {num}</span>
-          })}
-        </div>
+      <div> 
+        {array.map((num, index) => {
+          return <span key={index} className="mx-2"> {num}</span>
+        })}
+      </div>
     </div>
   );
 }
