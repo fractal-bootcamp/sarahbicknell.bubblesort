@@ -7,7 +7,7 @@ import bubbleIcon from "./bubble.webp"
 //if the next element is smaller, swap elements
 // when done, check if it's sorted, if not, do it again
 
-import bubbleStep from "./algorithms/bubbleSort"
+import bubbleStep from "../../algorithms/bubbleSort"
 
 const startingArray = [3, 5, 1, 7, 4, 6, 9, 2, 8]
 
@@ -53,7 +53,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col pl-10">
+    <div className="flex flex-col pl-10 font-mono">
       <h2 className="text-2xl font-bold pb-10 pt-10 bg-gradient-to-r bg-[length:400px_100px] from-blue-800 to-pink-500 bg-clip-text text-transparent"> 
         Bubble Sort Visualization
       </h2>

@@ -35,6 +35,8 @@ return output
 
 console.log(insertionSort(testArray))
 
+export default insertionSort
+
 //take the next element in input list 
 //compare it to the last element in output list
 //if it's larger than the last element, insert it there ouput[i + 1]

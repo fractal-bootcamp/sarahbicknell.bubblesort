@@ -1,37 +1,22 @@
 'use client'
-import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
-import BubbleComp from './bubbleComp';
+import Link from "next/link";
 
 
-function Header() {
-  return (
-    <header>
-      <h1>Al Gore Rythms</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">Sorting</Link>
-        <Link to="/movies">Searching</Link>
-      </nav>
-    </header>
-  );
-}
-
-function Footer() {
-  return (
-    <footer> 
-      <p> Created with ♡ by Disco </p>
-    </footer>
-  )
-}
-
-export default function App() {
+export default function Homepage() {
   return(
-    <Router>
-      <Header /> 
-        <Routes> 
-          <Route path='/' element={<BubbleComp />} /> 
-        </Routes>
-      <Footer /> 
-    </Router>
+    <div className="m-5 text-xl pb-3"> 
+      <h1 className="text-3xl font-mono pb-5"> Algorithm Visualization Project </h1>
+      <ul> 
+        <li> 
+          <Link href="/sortingalgos/bubblesort"> Bubble Sort</Link>
+        </li>
+        <li> 
+          <Link href="/sortingalgos/insertionsort"> Insertion Sort</Link>
+        </li>
+        <li> 
+          <Link href="/about">About</Link>
+        </li>
+      </ul>
+    </div>
   )
 }
