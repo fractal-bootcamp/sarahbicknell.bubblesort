@@ -29,7 +29,7 @@ export default function InsertionComp() {
     console.log(currentOutput)
 
     return (
-        <div className="text-xl m-4"> 
+        <div className="text-xl m-4 p-4"> 
             <h1 className="text-2xl font-mono pb-4"> Insertion Sort Visualization </h1> 
             <p> Input: </p>
             <div className="flex">
@@ -40,15 +40,17 @@ export default function InsertionComp() {
                 borderColor: value === currentValue ? 'blue' : 'gray' }}> {value} </div>
             ))}
             </div>
-            <p> Output: </p>
-            <div className="flex"> 
-                 {currentOutput.output.map((value, index) => (
-                <div key={index} className="border p-4"                             
-                    style={{
-                    color: value === currentValue ? 'red' : 'black', 
-                    borderColor: value === currentValue ? 'red' : 'gray' }}> {value} </div>
-                ))}
+            <div className="py-4">
+                <p> Output: </p>
+                <div className="flex"> 
+                    {currentOutput.output.map((value, index) => (
+                    <div key={index} className="border p-4"                             
+                        style={{
+                        color: value === currentValue ? 'red' : 'black', 
+                        borderColor: value === currentValue ? 'red' : 'gray' }}> {value} </div>
+                    ))}
 
+                </div>
             </div>
 
         </div>
