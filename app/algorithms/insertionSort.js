@@ -1,35 +1,41 @@
 const testArray = [6, 5, 3, 1, 8, 7, 2, 4]
 
+const outputHistory = []
 
 function insertionSort(input) {
     let output = []
     output[0] = input[0]
+    outputHistory.push({output: output.slice(), currentValue: input[0]});
 
     //for each element in the input array , going in order
     for (let i = 1; i < input.length; i++){
         //assign that element to the current value we're checking 
         let currentValue = input[i]
-        console.log(currentValue)
+
         let inserted = false;
         // for each element in the output array, starting at the end
         for (let o = output.length - 1 ; o >= 0; o--){
             //check if that value is larger than currentvalue
             if (output[o] >= currentValue){
-            //if it is , move its index up by one 
+                //if it is , move its index up by one 
                 output[o + 1] = output[o]
+                //if it isn't, we want to insert the currentvalue right next to it 
+                //then we swtich insert to true to we know insertion has happened 
             } else {
                 output[o + 1] = currentValue
                 inserted = true ;
-
+                
                 break
             }
         }
+        //if insert hasn't happened we know we're at the end so the value is smaller than anything in output and should be put at start 
         if (inserted === false) {
             output[0] = currentValue;
         }
+        outputHistory.push({output: output.slice(), currentValue})
     } 
 
-return output
+return outputHistory
 
 }
 
