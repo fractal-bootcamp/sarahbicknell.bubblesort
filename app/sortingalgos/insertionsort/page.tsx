@@ -43,7 +43,7 @@ export default function InsertionComp() {
             <div className="py-4">
                 <p> Output: </p>
                 <div className="flex"> 
-                    {currentOutput.output.map((value, index) => (
+                    {currentOutput.output.map((value: number, index: number) => (
                     <div key={index} className="border p-4"                             
                         style={{
                         color: value === currentValue ? 'red' : 'black', 
