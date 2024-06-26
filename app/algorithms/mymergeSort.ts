@@ -6,6 +6,7 @@
 
 
 function merge(firstArray: number[], secondArray: number[]): number[] {
+    console.log("merge running!")
     let newFirstArray = [...firstArray]
     let newSecondArray = [...secondArray]
     let sortedArray: number[] = []
@@ -32,12 +33,14 @@ function merge(firstArray: number[], secondArray: number[]): number[] {
 }
 
 //oh shit, i'm naming this mergeSort inside of "divide" or something because this actually the main function and will call the other one
-function mergeSort(myCuteMessyArray: number[]) {
+function mergeSort(myCuteMessyArray: number[], counter: {value: number}) {
+    console.log("Starting array: ", myCuteMessyArray)
     if (myCuteMessyArray.length === 1) {
         return myCuteMessyArray
         // it's already sorted!
     }
-
+    
+    counter.value++
     //find the index of middle so we can divide it in two (floor'd in case its odd)
     const middleIndex = Math.floor(myCuteMessyArray.length / 2)
     //slice first half from start up to the middle index (slice method takes index of start and end of slice)
@@ -47,11 +50,19 @@ function mergeSort(myCuteMessyArray: number[]) {
 
     //then i want to recurse these back into the function
     //ok but this part confuses me lol
-    const sortedFirstHalf = mergeSort(firstHalf)
-    const sortedSecondHalf = mergeSort(secondHalf)
+    const sortedFirstHalf = mergeSort(firstHalf, counter)
+    console.log("sorted first half: ", sortedFirstHalf, counter.value)
+    const sortedSecondHalf = mergeSort(secondHalf, counter)
+    console.log("sorted second half: ", sortedSecondHalf)
+
     const cuteSortedArray = merge(sortedFirstHalf, sortedSecondHalf)
+    console.log("after merge call:", cuteSortedArray)
     //ok so now i need to write the merge function
 
     return cuteSortedArray
 }
-console.log(mergeSort([4, 2, 6, 3]))
+
+const counter = {value: 0}
+
+const finalstate = mergeSort([4, 2, 3, 7], counter)
+console.log("counter: " , counter.value)

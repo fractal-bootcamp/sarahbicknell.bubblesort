@@ -10,7 +10,3 @@ export default function linearSearch(array: number[], target: number): number | 
         } 
     } return undefined 
 }
-
-let array = [3, 2, 6, 9, 3, 6, 4, 5, 1, 2, 4, 9, 6, 7, 3]
-
-console.log(linearSearch(array, 6))
