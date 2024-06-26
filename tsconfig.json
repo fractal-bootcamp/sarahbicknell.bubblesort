@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/algorithms/insertionSort.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/algorithms/insertionSort.js", "app/algorithms/mergeSort.ts"],
   "exclude": ["node_modules"]
 }
